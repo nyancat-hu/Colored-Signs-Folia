@@ -5,8 +5,9 @@ repositories {
             password = rootProject.ext.get("mavenPassword") as String
         }
     }
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
-    compileOnly("org.bukkit:bukkit:1.7.10-R0.1-SNAPSHOT")
+    compileOnly("dev.folia:folia-api:1.20.1-R0.1-SNAPSHOT")
 }

@@ -49,9 +49,9 @@ public final class ListenerSignEditor extends ColoredSignsListener {
             dataContainer.set(rawLinesKey, getStringArrayType(), rawLines);
             sign.update(true, true);
         };
-
-        BukkitScheduler scheduler = Bukkit.getScheduler();
-        scheduler.runTask(plugin, task);
+        Bukkit.getRegionScheduler().run(plugin,block.getLocation(),A->task.run());
+//        BukkitScheduler scheduler = Bukkit.getScheduler();
+//        scheduler.runTask(plugin, task);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -124,9 +124,9 @@ public final class ListenerSignEditor extends ColoredSignsListener {
             printDebug("Opening new sign block.");
             player.openSign(newSign);
         };
-
-        BukkitScheduler scheduler = Bukkit.getScheduler();
-        scheduler.runTaskLater(plugin, task, 2L);
+        Bukkit.getRegionScheduler().runDelayed(plugin,block.getLocation(),A->task.run(),2L);
+//        BukkitScheduler scheduler = Bukkit.getScheduler();
+//        scheduler.runTaskLater(plugin, task, 2L);
     }
 
     private @NotNull StringArrayType getStringArrayType() {
